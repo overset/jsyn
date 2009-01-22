@@ -1,12 +1,12 @@
 $(document).ready(function () {
 	$('pre.code').each(function () {
-		var typ=this.className.split(' ').pop(), typs = { web:{
+		var ext = new Date(),typ=this.className.split(' ').pop(),typs = { web:{
 				k:'break,case,catch,class,continue,delete,do,else,for,function,if,in,instanceof,new,'+
 					'private,protected,public,return,switch,throw,throw,try,typeof,var,watch,while',
 				d:'array,bool,boolean,date,datetime,decimal,false,float,hashtable,int,int32,nan,null,'+
 					'string,true',
 				c:/(?:\/\*(.|[\n\r])*?\*\/)|(?:\/\/[^\n\r]+[\n\r])|(?:<![-]{2,3}([\s\S](?!>))+[-]{2,3}>)/
-			}, sql:{
+			},sql:{
 				k:'alter,begin,by,commit,create,delete,drop,exec,from,group,having,insert,join,like,'+
 					'on,order,rollback,select,set,table,transaction,trigger,truncate,union,update,'+
 					'values,where',
@@ -33,6 +33,7 @@ $(document).ready(function () {
 				}
 			}
 		}
-		$(this).replaceWith('<pre class="'+ this.className +'">'+ os + is.substring(pi,is.length) +'</pre>');
+		$(this).replaceWith('<pre class="'+ this.className +'">'+ os + is.substring(pi,is.length) +'</pre>'+
+			((new Date()).getTime() - ext.getTime()) +'ms');
 	});
 });
