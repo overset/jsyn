@@ -11,7 +11,7 @@ $(document).ready(function () {
 					'on,order,rollback,select,set,table,transaction,trigger,truncate,union,update,'+
 					'values,where',
 				d:'and,asc,between,desc,distinct,exists,inner,left,or,outer,right,top',
-				c:/(?:--[^\n\r]+[\n\r])/
+				c:/(?:\/\*(.|[\n\r])*?\*\/)|(?:--[^\n\r]+[\n\r])/
 			}};
 		for (var r = [{c:'c',r:(typs[typ] || typs.web).c},	// comments
 					{c:'s',r:/(?:\/\S+\/)|(?:'(?:\\'|[^'])*')|(?:"(?:\\"|[^"])*")/},	// regexp,strings
