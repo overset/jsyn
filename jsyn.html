@@ -2,7 +2,7 @@
 <script src="jquery.js"></script>
 <script src="jsyn.js"></script>
 <style>
-	.code{font-family:monospace; font-size:12px; background:url(bg3.jpg); border:1px solid; border-color:#ccc #eee #eee #ccc; padding-left:2px;}
+	.code{background:url(bg3.jpg); border:1px solid; border-color:#ccc #eee #eee #ccc; padding-left:2px;}
 	.code p{display:inline;white-space:pre;}
 	.code p.c{color:#888;}
 	.code p.s{color:#00f;}
@@ -13,7 +13,7 @@
 	.code p.f{color:#0d0;}
 </style>
 </head>
-<pre class="code">/* test jimpalmer@gmail.com
+<pre class="code c">/* test jimpalmer@gmail.com
  * this
  * insane func
  */
@@ -649,7 +649,7 @@ var aa=new Date();
 					d = 'string,bool,date,int,float,hashtable,array',
 					r = [
 						{c:'c',r:/(?:\/\*(.|[\n\r])*?\*\/)|(?:\/\/[^\n\r]+)|(?:&lt;![-]{2,3}([\s\S](?!&gt;))+[-]{2,3}&gt;)/},	// comments
-//						{c:'s',r:/(?:\'[^\']*\')|(?:"[^"]*")/},	// strings
+						{c:'s',r:/(?:\'[^\']*\')|(?:"[^"]*")/},	// strings
 						{c:'n',r:/(?:\d+\.?\d*[%]?)/}, // numbers
 						{c:'k',r:(new RegExp('(?:' + k.split(',').join(')|(?:') + ')'))}, // keywords
 						{c:'d',r:(new RegExp('(?:' + d.split(',').join(')|(?:') + ')'))}, // datatypes
