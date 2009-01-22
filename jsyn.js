@@ -1,3 +1,4 @@
+/* jsyn - ultralight syntax highlighter + Jim Palmer - jimpalmer@gmail.com + released under MIT License */
 $(document).ready(function () {
 	$('pre.code').each(function () {
 		var ext = new Date(),typ=this.className.split(' ').pop(),typs = { web:{
@@ -14,10 +15,10 @@ $(document).ready(function () {
 				c:/(?:\/\*(.|[\n\r])*?\*\/)|(?:--[^\n\r]+[\n\r])/
 			}};
 		for (var r = [{c:'c',r:(typs[typ] || typs.web).c},	// comments
-					{c:'s',r:/(?:\/\S+\/)|(?:'(?:\\'|[^'])*')|(?:"(?:\\"|[^"])*")/},	// regexp,strings
+					{c:'s',r:/(?:\/\S+\/)|(?:'(?:\\'|[^'])*')|(?:"(?:\\"|[^"])*")/}, // regexp,strings
 					{c:'n',r:/(?:\d+\.?\d*[%]?)/}, // numbers
-					{c:'k',r:(new RegExp('(?:' + (typs[typ] || typs.web).k.split(',').join('\\s)|(?:') + ')','i'))}, // keywords
-					{c:'d',r:(new RegExp('(?:' + (typs[typ] || typs.web).d.split(',').join('\\s)|(?:') + ')','i'))}, // datatypes
+					{c:'k',r:(new RegExp('(?:'+ (typs[typ] || typs.web).k.split(',').join('\\s)|(?:') +')','i'))}, // keywords
+					{c:'d',r:(new RegExp('(?:'+ (typs[typ] || typs.web).d.split(',').join('\\s)|(?:') +')','i'))}, // datatypes
 					{c:'w',r:/(?:[A-Za-z_-]\w*)/}, // word (variables)
 					{c:'f',r:/(?:[\[\]\(\)\{\}\/]+)/} // flow operators
 				],is = $(this).text(),os = '',re = '',rec = 0,rel = r.length; rec < rel; rec++ ) {
