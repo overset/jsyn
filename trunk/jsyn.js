@@ -3,7 +3,6 @@ $(document).ready(function () {
 		for (var k = 'break,catch,class,continue,else,for,function,if,in,instanceof,namespace,private,protected,public,return,switch,throw,try,typeof,using,var,watch,while,new,static,abstract,throw',
 				d = 'string,bool,boolean,date,datetime,int,int32,float,decimal,hashtable,array',
 				r = [{c:'c',r:/(?:\/\*(.|[\n\r])*?\*\/)|(?:\/\/[^\n\r]+[\n\r])|(?:<![-]{2,3}([\s\S](?!>))+[-]{2,3}>)/},	// comments
-//					{c:'r',r:/(?:\/\S+\/)/}, // regexp
 					{c:'s',r:/(?:\/\S+\/)|(?:'(?:\\'|[^'])*')|(?:"(?:\\"|[^"])*")/},	// regexp,strings
 					{c:'n',r:/(?:\d+\.?\d*[%]?)/}, // numbers
 					{c:'k',r:(new RegExp('(?:' + k.split(',').join('\\s)|(?:') + ')'))}, // keywords
