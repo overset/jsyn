@@ -1,4 +1,4 @@
-/* jsyn - ultralight syntax highlighter + Jim Palmer - jimpalmer@gmail.com + released under MIT License */
+/* jsyn - ultralight syntax highlighter; Jim Palmer - jimpalmer@gmail.com; released under MIT License */
 $(document).ready(function () {
 	$('pre.code').each(function () {
 		var ext = new Date(),typ=this.className.split(' ').pop(),typs = { web:{
@@ -20,7 +20,8 @@ $(document).ready(function () {
 					{c:'k',r:(new RegExp('(?:'+ (typs[typ] || typs.web).k.split(',').join('\\s)|(?:') +')','i'))}, // keywords
 					{c:'d',r:(new RegExp('(?:'+ (typs[typ] || typs.web).d.split(',').join('\\s)|(?:') +')','i'))}, // datatypes
 					{c:'w',r:/(?:[A-Za-z_-]\w*)/}, // word (variables)
-					{c:'f',r:/(?:[\[\]\(\)\{\}\/]+)/} // flow operators
+					{c:'f',r:/(?:[\[\]\(\)\{\}\/]+)/}, // flow operators
+					{c:'t',r:/(?:[\t])/} // flow operators
 				],is = $(this).text(),os = '',re = '',rec = 0,rel = r.length; rec < rel; rec++ ) {
 			re += (re ? '|' : '') + r[rec].r.source;
 		}
@@ -28,13 +29,13 @@ $(document).ready(function () {
 			for (rec = 0; rec < rel; rec++) {
 				if (r[rec].r.test(a[0])) {
 					os += is.substring(pi,(t.lastIndex - a[0].length)).replace(/</g,'&lt;').replace(/>/g,'&gt;') +
-						'<p class="'+ r[rec].c +'">'+ a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</p>';
+						'<span class="'+ r[rec].c +'">'+ a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</span>';
 					pi = t.lastIndex;
 					break;
 				}
 			}
 		}
-		$(this).replaceWith('<pre class="'+ this.className +'">'+ os + is.substring(pi,is.length) +'</pre>'+
-			((new Date()).getTime() - ext.getTime()) +'ms');
+		$(this).replaceWith('<pre class="'+ this.className +'">'+ os + is.substring(pi,is.length) +'</pre>');
+			//+ ((new Date()).getTime() - ext.getTime()) +'ms');
 	});
 });
