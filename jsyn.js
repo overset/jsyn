@@ -38,7 +38,7 @@ $(document).ready(function () {
 						var mp = t.lastIndex - a[0].length - 1,
 							to = tabs - ( ( mp - Math.max(is.lastIndexOf('\t', mp),is.lastIndexOf('\n', mp)) ) % tabs );
 					os += is.substring(pi,(t.lastIndex - a[0].length)).replace(/</g,'&lt;').replace(/>/g,'&gt;') +
-						'<b class="'+ r[rec].c + ( to && parseInt(to) != tabs ? ' t'+ to : '') +'">'+ a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</b>';
+						'<b class="'+ r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '') +'">'+ a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</b>';
 					pi = t.lastIndex;
 					break;
 				}
