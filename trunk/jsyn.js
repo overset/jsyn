@@ -24,21 +24,22 @@ $(document).ready(function () {
 					{c:'k',r:(new RegExp('(?:'+ ct.k.split(',').join('\\s)|(?:') +')'))}, // keywords
 					{c:'d',r:(new RegExp('(?:'+ ct.d.split(',').join('\\s)|(?:') +')'))}, // datatypes
 					{c:'w',r:/(?:[A-Za-z_-]\w*)/}, // word (variables)
-					{c:'f',r:/(?:[\[\]\(\)\{\}\/]+)/}, // flow operators
-					{c:'t',r:(new RegExp(( tabs == dtab ? '(?:\t)' : '(?:\t)' )))} // reformatted tabs
+					{c:'f',r:/(?:[\[\]\(\)\{\}:]+)/}, // flow operators
+					{c:'t',r:(new RegExp(( tabs == dtab ? '' : '(?:\t)' )))} // reformatted tabs
 				],is = $(this).text(),os = '',re = '',rec = 0,rel = r.length; rec < rel; rec++ ) {
-			//re += ( ( re && r[rec].r.source ) ? '|' : '' ) + r[rec].r.source;
-			re += ( re ? '|' : '' ) + r[rec].r.source;
+			re += ( ( re && r[rec].r.source ) ? '|' : '' ) + r[rec].r.source;
 		}
 		// wrap each token with appropriate type for colorization - using low-footprint inline element
 		for (var t = new RegExp(re,'gmi'),pi = 0,a = true,c = 0,of = 0,sl = is.length; c < sl && (a = t.exec(is)); c++) {
 			for (rec = 0; rec < rel; rec++) {
-				if (r[rec].r.test(a[0])) {
+				if (r[rec].r.source && r[rec].r.test(a[0])) {
 					if (tabs != dtab && r[rec].c == 't')
-						var mp = t.lastIndex - a[0].length - 1,
-							to = tabs - ( ( mp - Math.max(is.lastIndexOf('\t', mp),is.lastIndexOf('\n', mp)) ) % tabs );
+						var mp = t.lastIndex - a[0].length - 1, 
+							rn = Math.max(is.lastIndexOf('\r', mp), is.lastIndexOf('\n', mp))
+							to = tabs - ( ( mp - Math.max(is.lastIndexOf('\t', mp), rn) ) % tabs );
 					os += is.substring(pi,(t.lastIndex - a[0].length)).replace(/</g,'&lt;').replace(/>/g,'&gt;') +
-						'<b class="'+ r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '') +'">'+ a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</b>';
+						'<b class="'+ r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '') +'">'+ 
+						a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</b>';
 					pi = t.lastIndex;
 					break;
 				}
