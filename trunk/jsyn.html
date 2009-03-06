@@ -1,19 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
 <head>
 <script src="jquery.js"></script>
 <script src="jsyn.js"></script>
 <style>
-	.code{background:url(bg3.jpg); border:1px solid; border-color:#ccc #eee #eee #ccc; padding-left:2px;}
-	.code p{display:inline;white-space:pre;}
-	.code p.c{color:#888;}
-	.code p.s{color:#00f;}
-	.code p.n{color:#c00;}
-	.code p.k{color:#029;}
-	.code p.d{color:#069;}
-	.code p.w{color:#070;}
-	.code p.f{color:#0d0;}
+
+	.code{font-family:monospace; width:99%; font-size:12px; background:url(bg3.jpg); border:1px solid; border-color:#ccc #eee #eee #ccc; padding-left:2px; overflow-x:auto; overflow-y:visible;}
+
+	.code b{font-weight:normal;}
+	.code b.c{color:#888;}
+	.code b.s{color:#00f;}
+	.code b.n{color:#c00;}
+	.code b.k{color:#029;}
+	.code b.d{color:#069;}
+	.code b.w{color:#070;}
+	.code b.f{color:red;}
+
+	/* 4char tab spacing - 7px monospace font */
+	.code b.t{display:inline-block; width:28px; height:1px;}
+	.code b.t3{display:inline-block; height:1px; width:21px;}
+	.code b.t2{display:inline-block; height:1px; width:14px;}
+	.code b.t1{display:inline-block; height:1px; width:7px;}
+
+	/* inline stylization */
+	.inline{display:inline; width:auto; border:0px; border-left:1px solid #ddd; border-right:1px solid #ddd; padding:0px 4px;}
+
 </style>
 </head>
-<pre class="code c">/* test jimpalmer@gmail.com
+<pre class="code tab4">/* test jimpalmer@gmail.com
  * this
  * insane func
  */
@@ -222,7 +235,7 @@ function test () { return yarr; }
 }
 </pre>
 
-<pre class="code">
+<pre class="code tab4">
 &lt;html&gt;
 &lt;head&gt;
 "Initial Catalog=&lt;DBNAME&gt;;Data Source=&lt;DBNAME&gt;;User ID=&lt;DBUSER&gt;;password=&lt;DBPASS&gt;;"
@@ -241,7 +254,7 @@ function test () { return yarr; }
 &lt;/html&gt;
 </pre>
 
-<pre class="code">
+<pre class="code tab4">
 // csc.exe /t:library /out:sqlExample.dll /r:LitJson.dll com.overset.sqlExample.cs
 namespace com.overset {
 
@@ -267,7 +280,7 @@ namespace com.overset {
 }
 </pre>
 
-<pre class="code">
+<pre class="code tab4">
 /*
  * jTPS - table sorting, pagination, and animated page scrolling
  *	version 0.4
@@ -639,7 +652,7 @@ namespace com.overset {
 })(jQuery);
 </pre>
 
-<pre class="code">
+<pre class="code tab4">
 &lt;script&gt;
 $(document).ready(function () {
 	$('pre.code').each(
@@ -668,14 +681,14 @@ var aa=new Date();
 					}
 				}
 			}
-			$(this).replaceWith('&lt;pre class="code"&gt;'+ os + is.substring(pi,is.length) +'&lt;/pre&gt;\n'+ ((new Date()).getTime() - aa.getTime()) +'ms');
+			$(this).replaceWith('&lt;pre class="code tab4"&gt;'+ os + is.substring(pi,is.length) +'&lt;/pre&gt;\n'+ ((new Date()).getTime() - aa.getTime()) +'ms');
 		}
 	);
 });
 &lt;/script&gt;
 </pre>
 
-<pre class="code">
+<pre class="code tab4">
 /**
  * Lx : ECMAScript Lexical Analyzer with a lex like API.
  *
