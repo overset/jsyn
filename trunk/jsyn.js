@@ -1,5 +1,5 @@
 /* jsyn - ultralight syntax highlighter; Jim Palmer - jimpalmer@gmail.com; released under MIT License */
-$(document).ready(function () {
+$(function () {
 	$('pre.code').each(function () {
 		// define syntax def types for tokenization
 		var ext = new Date(),types = { web:{
@@ -34,11 +34,11 @@ $(document).ready(function () {
 			for (rec = 0; rec < rel; rec++) {
 				if (r[rec].r.source && r[rec].r.test(a[0])) {
 					if (tabs != dtab && r[rec].c == 't')
-						var mp = t.lastIndex - a[0].length - 1, 
+						var mp = t.lastIndex - a[0].length - 1,
 							rn = Math.max(is.lastIndexOf('\r', mp), is.lastIndexOf('\n', mp))
 							to = tabs - ( ( mp - Math.max(is.lastIndexOf('\t', mp), rn) ) % tabs );
 					os += is.substring(pi,(t.lastIndex - a[0].length)).replace(/</g,'&lt;').replace(/>/g,'&gt;') +
-						'<b class="'+ r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '') +'">'+ 
+						'<b class="'+ r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '') +'">'+
 						a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</b>';
 					pi = t.lastIndex;
 					break;
