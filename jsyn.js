@@ -1,5 +1,5 @@
 /* jsyn - ultralight syntax highlighter; Jim Palmer - jimpalmer@gmail.com; released under MIT License */
-$(function () {
+var jsyn = function () {
 	$('pre.code').each(function () {
 		// define syntax def types for tokenization
 		var ext = new Date(),types = { web:{
@@ -48,4 +48,4 @@ $(function () {
 		$(this).replaceWith('<pre class="'+ this.className +'">'+ os + is.substring(pi,is.length) +'</pre>');
 			//+ ((new Date()).getTime() - ext.getTime()) +'ms');
 	});
-});
+}; $(jsyn);
