@@ -36,33 +36,21 @@ var nodes = document.getElementsByTagName('pre'), jsyn = function () {
 						var mp = t.lastIndex - a[0].length - 1,
 							rn = Math.max(is.lastIndexOf('\r', mp), is.lastIndexOf('\n', mp))
 							to = tabs - ( ( mp - Math.max(is.lastIndexOf('\t', mp), rn) ) % tabs );
-					// innerHTML method
-					os.push( is.substring(pi,(t.lastIndex - a[0].length)).replace(/</g,'&lt;').replace(/>/g,'&gt;') +
-						'<b class="'+ r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '') +'">'+
-						a[0].replace(/</g,'&lt;').replace(/>/g,'&gt;') +'</b>' );
-/*
-*/
-/*
 					// DOM method
 					var nBlock = document.createElement('b');
 					nBlock.className = r[rec].c + ( r[rec].c == 't' && parseInt(to) != tabs ? to : '');
 					nBlock.appendChild(document.createTextNode(a[0]));
 					newPre.appendChild(document.createTextNode(is.substring(pi,(t.lastIndex - a[0].length))));
 					newPre.appendChild(nBlock);
-*/
 					pi = t.lastIndex;
 					break;
 				}
 			}
 		}
-		// pre needed to render in IE6
-		n.innerHTML = (/msie/i.test(navigator.userAgent) ? '<pre>':'') + os.join('') + is.substring(pi,is.length) + ((new Date()).getTime() - ext.getTime()) +'ms'+(/msie/i.test(navigator.userAgent) ? '</pre>':'');
-/*
 		// DOM methods
 		n.removeChild(n.firstChild);
 		n.appendChild(newPre);
 		n.appendChild(document.createTextNode(is.substring(pi,is.length) + ((new Date()).getTime() - ext.getTime()) +'ms'));
-*/
 	}
 };
 $(jsyn);
