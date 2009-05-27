@@ -25,3 +25,5 @@ control:
  * [http://plugins.jquery.com/project/chili]
 
  * [http://www.devpro.it/jshighlighter/] (very similar)
+
+ * [http://pradador.com/code/lighterjs/]
