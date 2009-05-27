@@ -1,7 +1,8 @@
 /* jsyn - ultralight syntax highlighter; Jim Palmer - jimpalmer@gmail.com; released under MIT License */
-var nodes = document.getElementsByTagName('pre'), jsyn = function () {
-	for (var node in nodes) {
-		var n = nodes[node],cnc = 0,cnl = ( n.childNodes != null ? n.childNodes.length : 0 ),is = n.nodeValue || '';
+var jsyn = function () {
+	this.nodes = document.getElementsByTagName('pre');
+	for (var node in this.nodes) {
+		var n = this.nodes[node],cnc = 0,cnl = ( n.childNodes != null ? n.childNodes.length : 0 ),is = n.nodeValue || '';
 		if ((n.className || '' ).indexOf('code') < 0) continue; // limit to 'pre.code' selector
 		for (;cnc < cnl; cnc++) is += n.childNodes.item(cnc).nodeValue; // capture all the content in the 'pre.code'
 		var ext = new Date(),dtab = 8,tabs = parseInt((n.className.match(/tab([0-9]+)/) || [])[1]) || dtab,os = [],
@@ -48,6 +49,9 @@ var nodes = document.getElementsByTagName('pre'), jsyn = function () {
 		// update the newly build innerhtml (pre needed to render in IE6 properly)
 		n.innerHTML = (/msie/i.test(navigator.userAgent) ? '<pre>' : '') + os.join('') + is.substring(pi,sl) + ((new Date()).getTime() - ext.getTime()) +'ms'+ (/msie/i.test(navigator.userAgent) ? '</pre>' : '');
 	}
+	return true;
 };
-// still tied to jquery document ready for now
-$(jsyn);
+document.attachEvent && document.attachEvent("onreadystatechange", /* IE DOM ready*/
+	function(e){ document.readyState === "complete" && jsyn() && document.detachEvent(e.type, arguments.callee); }) || 
+document.addEventListener && document.addEventListener("DOMContentLoaded", /* !IE DOM ready */
+	function(e){ jsyn() && document.removeEventListener(e.type, arguments.callee, false); }, false);
