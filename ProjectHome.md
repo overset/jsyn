@@ -1,0 +1,1 @@
+super-light super-fast javascript syntax highlighter that relies solely on multi-line regular expressions instead of the classical approach involving lexical analysis.
